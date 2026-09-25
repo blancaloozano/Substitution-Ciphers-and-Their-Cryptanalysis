@@ -20,6 +20,3 @@ def decrypt(ciphertext: str, k: int) -> str:
 
     return to_letters(shifted)
 
-c = encrypt('MYSECRETMESSAGE', 3)
-print(c, "expected: PBVHFUHWPHVVDJH")
-print(decrypt(c,3))
