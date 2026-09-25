@@ -43,9 +43,3 @@ def valid_keys() -> list [tuple[int, int]]:
                 keys.append((a,b))
 
     return keys
-
-
-c = encrypt('attack', 5, 8)
-print(c, 'expected: IZZISG')
-print(decrypt(c, 5, 8), 'expected: ATTACK')
-print('number of valid keys:', len(valid_keys()), 'expected: 312')
