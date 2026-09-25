@@ -4,6 +4,4 @@
 
 
 
-frequency distribution 
-english: https://pi.math.cornell.edu/~mec/2003-2004/cryptography/subs/frequencies.html
-spanish: https://es.sttmedia.com/frecuencias-de-letras-espanol#google_vignette
+frequency distribution : https://en.wikipedia.org/wiki/Letter_frequency
