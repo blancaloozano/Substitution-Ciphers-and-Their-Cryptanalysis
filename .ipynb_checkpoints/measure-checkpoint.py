@@ -93,3 +93,47 @@ def measure_vigenere(reference, length, count, language):
         if recovered_key == key:
             successes = successes + 1
     return successes / count
+
+if __name__ == "__main__":
+    lengths = [20, 30, 40, 60, 100]
+    trials = 200
+
+    print("C1 -- Caesar breaker recovery rate")
+    print(f"{'length':>8} | {'EN text/EN table':>18} | {'ES text/ES table':>18} | {'ES text/EN table':>18}")
+    for length in lengths:
+        r1 = measure_caesar(REFERENCE_EN, length, trials, "en")
+        r2 = measure_caesar(REFERENCE_ES, length, trials, "es")
+        r3 = measure_caesar(REFERENCE_ES, length, trials, "en")
+        print(f"{length:>8} | {r1:>18.2f} | {r2:>18.2f} | {r3:>18.2f}")
+
+    print()
+    print("C2 -- Affine breaker recovery rate (English)")
+    print(f"{'length':>8} | {'recovery rate':>15}")
+    for length in lengths:
+        r = measure_affine(REFERENCE_EN, length, trials, "en")
+        label = f"{r:.2f}" if r is not None else "CRASHES"
+        print(f"{length:>8} | {label:>15}")
+
+    print()
+    print("C2b -- Affine breaker, Spanish language table")
+    r_es = measure_affine(REFERENCE_ES, 100, 20, "es")
+    if r_es is None:
+        print("  language='es' crashes on every trial (break_affine.py bug: 'table = \\'spanish\\'' is a string, not the dict)")
+    else:
+        print(f"  recovery rate at length 100: {r_es:.2f}")
+
+    print()
+    print("C3 -- Vigenere breaker recovery rate")
+    key_lengths = [3, 5, 7]
+    total_lengths = [60, 120, 200, 300]
+    trials3 = 100
+    header = f"{'m':>4} |"
+    for total_length in total_lengths:
+        header = header + f" len={total_length:>4} |"
+    print(header)
+    for m in key_lengths:
+        row = f"{m:>4} |"
+        for total_length in total_lengths:
+            rate = measure_vigenere(REFERENCE_EN, m, total_length, trials3, "en")
+            row = row + f"{rate:>9.2f} |"
+        print(row)
