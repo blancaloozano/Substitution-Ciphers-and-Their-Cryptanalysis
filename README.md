@@ -1,10 +1,6 @@
 # Substitution-Ciphers-and-Their-Cryptanalysis
 
-<<<<<<< HEAD
 This project forms part of the subject Cryptography for Bachelor in Data Science and Engineering, CEU San Pablo University 26/27. It mathematically implements classic substitution ciphers (Caesars, Affine, Monoalphabetic and Vigenère) alongside automated cryptoanalysis tools. The foundation relies on the chi-squared statisic, comparing the frequency distribution of raw decrypted texts against theoretical English and Spanish language tables. 
-=======
-This project mathematically implements classic substitution ciphers (Caesars, Affine, Monoalphabetic and Vigenère) alongside automated cryptoanalysis tools. The foundation relies on the chi-squared statisic, comparing the frequency distribution of raw decrypted texts against theoretical English and Spanish language tables. 
->>>>>>> d3110a7da35c5e233944d2d64b191e56ff25a072
 
 The objective is to demonstrate how statisctical analysis breaks algorithms that preserve the underlying language structure, highlighting the practical weakness of simple substitution compared to modern cryptographic systems.
 
@@ -33,21 +29,31 @@ Part D - Command Line Interface (CLI)
 ```text
 python crypto.py <cipher> <mode> [key arguments] [--in FILE] [--out FILE] [--lang en|es]
 
+# Examples:
 python crypto.py caesar encrypt --key 3 --in message.txt
 python crypto.py affine decrypt --a 5 --b 8 --in cipher.txt --out plain.txt
 ...
 ```
-<<<<<<< HEAD
 
 ## 2. Key Space for each cipher
 * Caesar: There are 26 distinct keys, since its a shift of k positions and only k mod 26 matters.
-* Affine: The multiplier a must satisfy gcd(a,26) =1 to ensure a modular inverse exists for decryption. There are 12 coprime values within the 26 letter alphabet (1, 3, 5, 7...). These shift parameter b can take any of the 26 possible alphabetical positions. Multiplying these independent variables yields a total key space of 12 * 26 = 312 distinct keys. 
+* Affine: The multiplier a must satisfy gcd(a,26) =1 to ensure a modular inverse exists for decryption. There are 12 coprime values within the 26 letter alphabet (1, 3, 5, 7, 9, 11, 15, 17, 21, 23 and 25). These shift parameter b can take any of the 26 possible alphabetical positions. Multiplying these independent variables yields a total key space of 12 * 26 = 312 distinct keys. 
 * Monoalphabetic substitution: The key is a permutation of the 26-letter alphabet, therefore the keyspace is 26! = 4.0329 x 10^26
-* Vigenere: for a fixed key length m, each of the m key positions is independently any of 26 letters, giving 26^m keys. A five letter key has 26^5 = 11881376 possibilities. If the key length is unknown, the total key space is the inifnite sum all over m. The attacker must determine m before anything else. 
-## 3. Caesaer breaker, measured
-(The measurment code is in measure.py)
+* Vigenere: for a fixed key length m, each of the m key positions is independently any of 26 letters, giving 26^m keys. A five letter key has 26^5 = 11881376 possibilities. If the key length is unknown, the total key space is the inifnite sum all over m. The attacker must determine m before anything else.
 
-Method: 200 random fragments ofa  reference text at each length, each encrypted with a random shift, then broken with break_caesar. Recovery rate = fraction of trials where the recovered shift matches the encryption key exactly.
+## 3. Caesaer breaker, measured
+(The measurement code is available in measure.py)
+
+Method: 200 random fragments of a reference text at each length, each encrypted with a random shift, then broken with break_caesar. Recovery rate = fraction of trials where the recovered shift matches the encryption key exactly.
+
+Plaintext Length     |      Successful Recoveries     |      Success Rate
+20 characters        |          115 / 200             |          57.5%
+30 characters        |          168 / 200             |          84.0%
+40 characters        |          192 / 200             |          96.0%
+60 characters        |          200 / 200             |          100.0%
+100 characters       |          200 / 200             |          100.0%
+ 
+The Chi-sqaured statistic relies on the Law of Large Numbers. Texts under 30 characters lack the statistical volume to reflect the theoretical distirbution of the English langauge, leading to frequent false positives where an incorrect key produces a "better" chi-squared score. However, once the text reaches 50 / 60 characters, the autoamted attack becomes statistically infallible.
 
 ## 4. Affine breaker, measure and compared with C1
 
@@ -58,5 +64,3 @@ Method: 200 random fragments ofa  reference text at each length, each encrypted 
 ## 7. Why 26! is broken in minutes but AES-128 is not
 
 ## 8. Limitations
-=======
->>>>>>> d3110a7da35c5e233944d2d64b191e56ff25a072
