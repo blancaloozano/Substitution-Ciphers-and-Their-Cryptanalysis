@@ -33,12 +33,13 @@ def random_fragments(reference, length, count):
     
     for i in range(count):
         start = random.randint(0, start)
-        fragments.append(reference[start.start + length])
+        fragments.append(reference[start:start + length])
 
     return fragments
 
-def measure_caesar(reference, length, count, langauge):
-    fragments = random_fragments(reference, length, count)
+def measure_caesar(reference, length, count, language):
+    stripped = reference.replace(" ", "").upper()
+    fragments = random_fragments(stripped, length, count)
     successes = 0
     for fragment in fragments:
         k = random.randint(0, 25)
@@ -50,7 +51,6 @@ def measure_caesar(reference, length, count, langauge):
         if recovered_k == k:
             successes = successes + 1
     return successes / count
-
 def measure_affine(reference, length, count, language):
     keys = valid_keys()
     fragments = random_fragments(reference, length, count)
@@ -79,7 +79,7 @@ def random_key(m):
         key = key + letter
     return key
 
-def measure_vigenere(reference, length, count, language):
+def measure_vigenere(reference, m, length, count, language):
     stripped = reference.replace(" ", "")
     fragments = random_fragments(stripped, total_length, count)
     successes = 0
@@ -101,22 +101,22 @@ if __name__ == "__main__":
     print("C1 -- Caesar breaker recovery rate")
     print(f"{'length':>8} | {'EN text/EN table':>18} | {'ES text/ES table':>18} | {'ES text/EN table':>18}")
     for length in lengths:
-        r1 = measure_caesar(REFERENCE_EN, length, trials, "en")
-        r2 = measure_caesar(REFERENCE_ES, length, trials, "es")
-        r3 = measure_caesar(REFERENCE_ES, length, trials, "en")
+        r1 = measure_caesar(reference_en, length, trials, "en")
+        r2 = measure_caesar(reference_es, length, trials, "es")
+        r3 = measure_caesar(reference_es, length, trials, "en")
         print(f"{length:>8} | {r1:>18.2f} | {r2:>18.2f} | {r3:>18.2f}")
 
     print()
     print("C2 -- Affine breaker recovery rate (English)")
     print(f"{'length':>8} | {'recovery rate':>15}")
     for length in lengths:
-        r = measure_affine(REFERENCE_EN, length, trials, "en")
+        r = measure_affine(reference_en, length, trials, "en")
         label = f"{r:.2f}" if r is not None else "CRASHES"
         print(f"{length:>8} | {label:>15}")
 
     print()
     print("C2b -- Affine breaker, Spanish language table")
-    r_es = measure_affine(REFERENCE_ES, 100, 20, "es")
+    r_es = measure_affine(reference_es, 100, 20, "es")
     if r_es is None:
         print("  language='es' crashes on every trial (break_affine.py bug: 'table = \\'spanish\\'' is a string, not the dict)")
     else:
@@ -134,6 +134,6 @@ if __name__ == "__main__":
     for m in key_lengths:
         row = f"{m:>4} |"
         for total_length in total_lengths:
-            rate = measure_vigenere(REFERENCE_EN, m, total_length, trials3, "en")
+            rate = measure_vigenere(reference_en, m, total_length, trials3, "en")
             row = row + f"{rate:>9.2f} |"
         print(row)
