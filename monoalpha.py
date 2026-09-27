@@ -1,7 +1,7 @@
 
 from basics import to_numbers
 
-alphabet = "ABCDEFGHIJKLMNOPQRSSTUVWXYZ"
+alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 def encrypt(plaintext: str, key: str) -> str:
     key = key.upper()

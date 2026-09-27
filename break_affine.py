@@ -7,7 +7,7 @@ def break_affine(ciphertext: str, language: str = "en") -> tuple[tuple[int, int]
     if language == 'en':
         table = english
     else:
-        table = 'spanish'
+        table = spanish
 
     best_key = (0,0)
     best_score = float('inf')
