@@ -1,6 +1,6 @@
 import pytest
 
-from basics import to_numbers, to_letters, egcd, modinv, xor_bytes
+from basics import to_numbers, to_letters, egcd, moding, xor_bytes
 
 def test_to_numbers_to_letters_roundtrip():
     assert to_letters(to_numbers("Hello, World 123")) == "HELLOWORLD"
@@ -16,7 +16,7 @@ def test_modinv_raises_when_not_invertible():
     with pytest.raises(ValueError):
         modinv(2,26)
 
-def test_egcd_with_negatives():
+def test_egc_with_negatives():
     for a, b in [(-5, 26), (5, -26), (-17, -26), (0, 5), (5,0)]:
         g, x, y = egcd(a,b)
         assert g >= 0

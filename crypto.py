@@ -136,9 +136,9 @@ def main() -> None:
                 key, plain = break_vigenere(text, args.m, args.lang)
                 write_output(args, f"k={key}\n{plain}")
 
-            elif args.cipher == "assist":
-                text = read_input(args)
-                write_output(args, report(text, args.lang))
+        elif args.cipher == "assist":
+            text = read_input(args)
+            write_output(args, report(text, args.lang))
 
     except ValueError as e:
         print(f"Error: {e}", file=sys.stderr)
