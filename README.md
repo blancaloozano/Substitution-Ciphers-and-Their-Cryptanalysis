@@ -91,7 +91,7 @@ To solve this, `assist.py` was used to generate an advanced frequency report. By
 ## 7. Why 26! is broken in minutes but AES-128 is not
 A generic Monoalphabetic cipher boasts a massive key space of $26! \approx 4.03 \times 10^{26}$, making brute force attacks physically impossible for modern computers. Yet, it can be broken in minutes. This vulnerability exists because substitution ciphers lack diffusion. They map one plaintext character to exactly one ciphertext character, perfectly preserving the statistical fingerprint of the plaintext language.
 
-Modern symmetric algorithms like AES128 operate on fundamentally different principles: Confusion and Diffusion (the Avalanche Effect). While AES128 has a key space of $2^{128} \approx 3.4 \times 10^{38}$, its strength lies in the fact that changing a single bit in the plaintext alters approximately 50% of the ciphertext bits. The output is statistically indistinguishable from random noise. Because language frequencies are completely obliterated, chi-squared attacks are entirely useless, forcing attackers to rely on impossible exhaustive searches.
+Modern symmetric algorithms like AES128 operate on fundamentally different principles: Confusion and Diffusion. While AES128 has a key space of $2^{128} \approx 3.4 \times 10^{38}$, its strength lies in the fact that changing a single bit in the plaintext alters approximately 50% of the ciphertext bits. The output is statistically indistinguishable from random noise. Because language frequencies are completely obliterated, chi-squared attacks are entirely useless, forcing attackers to rely on impossible searches.
 
 ## 8. Limitations
 
