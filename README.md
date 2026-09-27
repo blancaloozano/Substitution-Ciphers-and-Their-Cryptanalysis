@@ -11,13 +11,15 @@ The program is executed entirely from the terminal by targetting the main execut
 Part B - The four ciphers
 ```text
 python3 -c "from caesar import encrypt; print(encrypt('MYSECRETMESSAGE', 3))"
-```
-```text
 python3 -c "from affine import encrypt; print(encrypt('attack', 5,8))"
-```
-```text
 python3 -c "from monoalpha import encrypt, key_from_keyword; print(encrypt('HELLO', key_from_keyword('CRYPTO')))"
-```
-```text
 python3 -c "from vigenere import encrypt; print(encrypt('attackatdawn', 'LEMON'))"
+```
+
+Part C - The four breakers
+```text
+python3 -c "from break_caesar import break_caesar; from caesar import encrypt; print(break_caesar(encrypt('THISISASECRETMESSAGE', 11), 'en'))"
+python3 -c "from break_affine import break_affine; from affine import encrypt; print(break_affine(encrypt('THISISASECRETMESSAGE', 7, 3), 'en'))"
+python3 -c "from break_vigenere import break_vigenere; from vigenere import encrypt; print(break_vigenere(encrypt('THISISASECRETMESSAGEUSEDFORTESTING', 'LEMON'), 5, 'en'))"
+python3 -c "from assist import report; print(report('QATNTYSMHQXJOCYHKATM', 'en'))"
 ```
