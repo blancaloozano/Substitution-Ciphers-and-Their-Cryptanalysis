@@ -1,6 +1,10 @@
 # Substitution-Ciphers-and-Their-Cryptanalysis
 
+<<<<<<< HEAD
 This project forms part of the subject Cryptography for Bachelor in Data Science and Engineering, CEU San Pablo University 26/27. It mathematically implements classic substitution ciphers (Caesars, Affine, Monoalphabetic and Vigenère) alongside automated cryptoanalysis tools. The foundation relies on the chi-squared statisic, comparing the frequency distribution of raw decrypted texts against theoretical English and Spanish language tables. 
+=======
+This project mathematically implements classic substitution ciphers (Caesars, Affine, Monoalphabetic and Vigenère) alongside automated cryptoanalysis tools. The foundation relies on the chi-squared statisic, comparing the frequency distribution of raw decrypted texts against theoretical English and Spanish language tables. 
+>>>>>>> d3110a7da35c5e233944d2d64b191e56ff25a072
 
 The objective is to demonstrate how statisctical analysis breaks algorithms that preserve the underlying language structure, highlighting the practical weakness of simple substitution compared to modern cryptographic systems.
 
@@ -33,6 +37,7 @@ python crypto.py caesar encrypt --key 3 --in message.txt
 python crypto.py affine decrypt --a 5 --b 8 --in cipher.txt --out plain.txt
 ...
 ```
+<<<<<<< HEAD
 
 ## 2. Key Space for each cipher
 * Caesar: There are 26 distinct keys, since its a shift of k positions and only k mod 26 matters.
@@ -53,3 +58,5 @@ Method: 200 random fragments ofa  reference text at each length, each encrypted 
 ## 7. Why 26! is broken in minutes but AES-128 is not
 
 ## 8. Limitations
+=======
+>>>>>>> d3110a7da35c5e233944d2d64b191e56ff25a072
