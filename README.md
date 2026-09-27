@@ -10,8 +10,18 @@ The program is executed entirely from the terminal by targetting the main execut
 
 Part B - The four ciphers
 ```text
-python3 -c "from caesar import encrypt; print(encrypt('MYSECRETMESSAGE', 3))" --> expected output: PBVHFUHWPHVVDJH
-python3 -c "from affine import encrypt; print(encrypt('attack', 5,8))" --> expected output: IZZISG
-python3 -c "from monoalpha import encrypt, key_from_keyword; print(encrypt('HELLO', key_from_keyword('CRYPTO')))" --> expected output: BTGGJ
-python3 -c "from vigenere import encrypt; print(encrypt('attackatdawn', 'LEMON'))" --> expected output: LXFOPVEFRNHR
+python3 -c "from caesar import encrypt; print(encrypt('MYSECRETMESSAGE', 3))"
 ```
+expected output: PBVHFUHWPHVVDJH
+```text
+python3 -c "from affine import encrypt; print(encrypt('attack', 5,8))"
+```
+expected output: IZZISG
+```text
+python3 -c "from monoalpha import encrypt, key_from_keyword; print(encrypt('HELLO', key_from_keyword('CRYPTO')))"
+```
+expected output: BTGGJ
+```text
+python3 -c "from vigenere import encrypt; print(encrypt('attackatdawn', 'LEMON'))"
+```
+expected output: LXFOPVEFRNHR
