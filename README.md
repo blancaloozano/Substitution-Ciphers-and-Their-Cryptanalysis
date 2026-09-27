@@ -10,20 +10,20 @@ This project was done for the subject Cryptography, part of Bachelor in Data Sci
 
 The repository is modularized into three logical layers to separate the encryption, analysis and user interface components:
 
-* Interface Layer: **crypto.py** acts as the single entry point, utilizing the standard **argparse** library to manage commands, mathematical parameters and local reading/writing.
-* 
-* Base Cryptography: The files **caesar.py**, **affine.py**, **monoalpha.py** and **vigenere.py** contain the logic for the encryption, decryption and algorithmic coset generation.
-* 
-* Cryptoanalysis Layer: **break_caesar.py**, **break_affine.py** and **break_vigenere.py** execute automated attacks using statistically guided force. **assist.py** generates advance frequency reports (trigrams, bigrams, double letters).
-* 
-* Validation Folder: The **tests/** directory includes automated infrastructure to ensure statistical reliability and guarantee no code regressions occur within the base algorithms.
+### Interface Layer
+**crypto.py** acts as the single entry point, utilizing the standard **argparse** library to manage commands, mathematical parameters and local reading/writing.
+ 
+Base Cryptography: The files **caesar.py**, **affine.py**, **monoalpha.py** and **vigenere.py** contain the logic for the encryption, decryption and algorithmic coset generation.
+
+Cryptoanalysis Layer: **break_caesar.py**, **break_affine.py** and **break_vigenere.py** execute automated attacks using statistically guided force. **assist.py** generates advance frequency reports (trigrams, bigrams, double letters).
+
+Validation Folder: The **tests/** directory includes automated infrastructure to ensure statistical reliability and guarantee no code regressions occur within the base algorithms.
 
 ## 2. Usage Instructions
 
 The program is executed entirely from the terminal by targetting the main executable gile. All commands assume you are in the repository root, with Python 3.11+ and no dependencies beyond the standard library (pytest only if you with to run the automated tests).
 
 Base
-
 
 
 
