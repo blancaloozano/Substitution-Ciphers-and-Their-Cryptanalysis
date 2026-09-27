@@ -20,10 +20,13 @@ The repository is organized into three logical layers to separate the encryption
 
 ## 2. Usage Instructions
 
-The program is executed entirely from the terminal by targetting the main executable gile. All commands assume you are in the repository root, with Python 3.11+ and no dependencies beyond the standard library (pytest only if you with to run the automated tests).
+The program is executed entirely from the terminal by targetting the main executable file, crypto.py. All commands assume you are in the repository root, with Python 3.11+ and no dependencies beyond the standard library (pytest only if you with to run the automated tests).
 
+#### Encrypting & Decrypting
 
-
+```text
+python3 crypto.py caesar encrypt --key 5 --in "MESSAGE
+```
 
 
 
