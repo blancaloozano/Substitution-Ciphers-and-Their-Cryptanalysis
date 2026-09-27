@@ -1,4 +1,4 @@
-
+import os
 import sys
 import caesar
 import affine
@@ -12,8 +12,11 @@ from break_vigenere import break_vigenere
 
 def read_input(args) -> str:
     if args.in_file:
-        with open(args.in_file, 'r') as f:
-            return f.read()
+        if os.path.isfile(args.in_file):
+            with open(args.in_file, 'r') as f:
+                return f.read()
+        else:
+            return args.in_file
     return sys.stdin.read()
 
 def write_output(args, text: str) -> None:
