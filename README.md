@@ -45,14 +45,14 @@ python crypto.py affine decrypt --a 5 --b 8 --in cipher.txt --out plain.txt
 (The measurement code is available in measure.py)
 
 Method: 200 random fragments of a reference text at each length, each encrypted with a random shift, then broken with break_caesar. Recovery rate = fraction of trials where the recovered shift matches the encryption key exactly.
-
+```text
 Plaintext Length     |      Successful Recoveries     |      Success Rate
 20 characters        |          115 / 200             |          57.5%
 30 characters        |          168 / 200             |          84.0%
 40 characters        |          192 / 200             |          96.0%
 60 characters        |          200 / 200             |          100.0%
 100 characters       |          200 / 200             |          100.0%
- 
+```
 The Chi-sqaured statistic relies on the Law of Large Numbers. Texts under 30 characters lack the statistical volume to reflect the theoretical distirbution of the English langauge, leading to frequent false positives where an incorrect key produces a "better" chi-squared score. However, once the text reaches 50 / 60 characters, the autoamted attack becomes statistically infallible.
 
 ## 4. Affine breaker, measure and compared with C1
